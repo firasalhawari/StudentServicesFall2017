@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{msgs.app_title}</title>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/login_template.xhtml">                           
+            <h:form id="login_form">
+                <center>  
+                    <br/><br/>                                    
+                    <p:fieldset  style="width: 410px;
+                                        height: 420px;
+                                        box-shadow:9px 0 4px -4px #cccccc, -8px 0 5px -4px #cccccc;">                        
+                        <h:panelGrid style="text-align: left">
+                            <p:messages id="messages"/> 
+                        </h:panelGrid>                       
+                        <br/>
+                        <h:panelGrid columns="1" cellspacing="10px">
+                            <p:outputLabel style="color: #0B70BE" value="#{msgs.username}:"/>
+                            <p:inputText id="login_username"
+                                         maxlength="64"                                         
+                                         value="#{sessionBean.username}"
+                                         style="width:300px"
+                                         required="true"
+                                         requiredMessage="#{msgs.wrong_username}">
+                                <p:watermark for="login_username" value="#{msgs.enter_username}"/>                                                                                                
+                            </p:inputText>
+
+                            <p:outputLabel style="color: #0B70BE" value="#{msgs.password}:"/>
+                            <p:password id="login_password" 
+                                        maxlength="48"                                       
+                                        required="true"
+                                        requiredMessage="#{msgs.wrong_password}"
+                                        value="#{sessionBean.password}"
+                                        style="width:300px;">          
+                                <p:watermark for="login_password" value="#{msgs.enter_password}"/>                                
+                            </p:password>                             
+                        </h:panelGrid>
+
+                        <p:commandButton   value="#{msgs.login}"                                                
+                                           style="width:130px; height:35px; margin-top:25px; background-color: #428BCA;" 
+                                           ajax="false"
+                                           action="#{sessionBean.login()}" />                                                         
+                    </p:fieldset> 
+                </center>
+            </h:form>              
+        </ui:decorate>
+    </h:body>
+</html>

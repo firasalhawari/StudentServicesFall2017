@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">  
+    <f:view locale="#{langBean.locale}">
+        <div id="app_container" >
+            <h:outputStylesheet library="css" name="app_style.css"/>                    
+            <div  id="app_header">
+                <ui:insert name="app_header">
+                    <ui:include src="/app_templates/divs/app_header.xhtml"/>
+                </ui:insert>
+            </div> 
+            <div  id="upper_left">
+                <ui:insert name="upper_left">
+                    <ui:include src="/app_templates/divs/upper_left.xhtml"/>
+                </ui:insert>   
+            </div>
+            <div  id="upper_right">
+                <ui:insert name="upper_right">
+                    <ui:include src="/app_templates/divs/upper_right.xhtml"/>
+                </ui:insert>   
+            </div>
+            <div  id="ribbon_menu">
+                <ui:insert name="ribbon_menu">
+                    <ui:include src="/app_templates/divs/ribbon_menu.xhtml"/>
+                </ui:insert>   
+            </div>
+            <div id="app_content"                 
+                 style="width:100%; float:#{langBean.styleFloat}"
+                 >            
+                <ui:insert/>
+            </div>
+            <div id="app_footer" >                                              
+                <ui:insert name="app_footer">
+                    <ui:include src="/app_templates/divs/app_footer.xhtml"/>
+                </ui:insert>
+            </div>  
+        </div>
+    </f:view>
+</ui:composition>

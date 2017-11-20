@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">  
+    <h:form id="ribbon_menu"             
+            style="direction:#{langBean.dir}; width:100%">           
+        <p:ribbon activeIndex="#{sessionBean.menuIndex}">                        
+            <p:tab title="#{msgs.events}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.events}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      actionListener="#{sessionBean.setMenuIndex(0)}"
+                                      action="/events/manage_events.xhtml">                         
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>
+            
+            <p:tab title="#{msgs.alumni}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.alumni}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      actionListener="#{sessionBean.setMenuIndex(1)}"
+                                      action="/alumni/alumni.xhtml">                         
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>
+            
+            <p:tab title="#{msgs.hoffaz}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.hoffaz}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      actionListener="#{sessionBean.setMenuIndex(2)}"
+                                      action="/hoffaz/hoffaz.xhtml">                         
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>
+            
+            <p:tab title="#{msgs.houses}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.houses}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      actionListener="#{sessionBean.setMenuIndex(3)}"
+                                      action="/houses/houses.xhtml">                         
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>
+            
+            <p:tab title="#{msgs.licensing}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.licensing}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      actionListener="#{sessionBean.setMenuIndex(4)}"
+                                      action="/licensing/licensing.xhtml">                         
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>
+        </p:ribbon>
+    </h:form>
+</ui:composition>

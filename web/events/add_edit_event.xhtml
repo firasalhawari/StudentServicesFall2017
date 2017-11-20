@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msgs.manage_events}</title>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml">  
+            <h:form id="add_event">            
+                <p:messages id="msgs" closable="true" globalOnly="true"/>
+
+                <p:panel header="#{msgs.event_info}"                            
+                         style="min-height:400px; 
+                                direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                    <h:panelGrid id="add"
+                                 style="float: #{langBean.styleFloat};" 
+                                 columns="3"                              
+                                 dir="#{langBean.dir}">
+                        <p:outputLabel value="#{msgs.event_name_en}:" for="event_name_en"/>
+                        <p:inputText id="event_name_en"
+                                     style="width:600px"
+                                     value="#{addEditEventBean.nameEn}"                                      
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="event_name_en" styleClass="errorMsg"/>
+
+                        <p:outputLabel value="#{msgs.event_name_ar}:" for="event_name_ar"/>
+                        <p:inputText id="event_name_ar"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:600px"
+                                     dir="rtl"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="event_name_ar" styleClass="errorMsg"/>
+
+                        <p:outputLabel value="#{msgs.event_type}:" for="event_type"/>
+                        <p:selectOneMenu value="#{addEditEventBean.eventTypeId}"
+                                         id="event_type"
+                                         required="true"                                                                                  
+                                         requiredMessage=" #{msgs.required_msg}">
+                            <f:selectItem itemLabel="#{msgs.select_one}"
+                                          itemValue=""/>
+                            <f:selectItems var="type"
+                                           value="#{addEditEventBean.eventTypes}" 
+                                           itemLabel="#{langBean.isEnglish?type.nameEn:type.nameAr}"
+                                           itemValue="#{type.typeId}"/>                             
+                        </p:selectOneMenu>
+                        <h:message for="event_type" styleClass="errorMsg"/>                    
+
+                        <p:outputLabel value="#{msgs.place_en}:" for="place_en"/>
+                        <p:inputText id="place_en"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:600px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="place_en" styleClass="errorMsg"/>
+
+                        <p:outputLabel value="#{msgs.place_ar}:" for="place_ar"/>
+                        <p:inputText id="place_ar"
+                                     value="#{addEditEventBean.placeAr}"
+                                     style="width:600px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="place_ar" styleClass="errorMsg"/>
+
+                        <p:outputLabel value="#{msgs.date}:" for="date"/>
+                        <p:calendar id="date"
+                                    value="#{addEditEventBean.date}"
+                                    dir="ltr"
+                                    pattern="yyyy-MM-dd HH:mm" 
+                                    navigator="true"
+                                    required="true"
+                                    yearRange="c-10:c+1"
+                                    timeInput="true"
+                                    requiredMessage=" #{msgs.required_msg}"/> 
+                        <h:message for="date" styleClass="errorMsg"/>                                        
+
+                        <p:outputLabel value="#{msgs.capacity}:" for="capacity"/>
+                        <p:inputText id="capacity"
+                                     value="#{addEditEventBean.capacity}"
+                                     required="true"
+                                     maxlength="10"  
+                                     converterMessage="#{msgs.capacity_msg}"
+                                     validatorMessage="#{msgs.capacity_msg}"
+                                     requiredMessage="#{msgs.required_msg}">
+                            <f:validateLongRange minimum="0" maximum="1000"/>
+                        </p:inputText>
+                        <h:message for="capacity" styleClass="errorMsg"/>                        
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:commandButton value="#{msgs.save}"
+                                 styleClass="commandButton"
+                                 icon="ui-icon-disk"
+                                 iconPos="#{langBean.styleFloat}"
+                                 ajax="false"
+                                 style="float:#{langBean.styleFloat}"                                                                   
+                                 actionListener="#{addEditEventBean.saveEvent()}" />
+                <p:commandButton value="#{msgs.cancel}"
+                                 icon="ui-icon-cancel"  
+                                 iconPos="#{langBean.styleFloat}"
+                                 styleClass="commandButton"
+                                 immediate="true" 
+                                 style="float:#{langBean.styleFloat}"                                 
+                                 action="manage_events"  />                                   
+            </h:form>
+        </ui:decorate>
+    </h:body>
+</html>
+
