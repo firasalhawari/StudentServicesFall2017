@@ -15,21 +15,10 @@ import javax.inject.Named;
 @Named(value = "sessionBean")
 @SessionScoped
 public class SessionBean implements Serializable {
-
     private String username;
-    private String password;
-
-    // Session attributes
-
+    private String password;    
     private Connection connection; 
-    private int selectedItemId; 
-
-    private int selectedBusID; 
-    private int selectedStudentID;
-    private int selectedDriverID;
-
-
-
+    private int selectedItemId;     
     private int menuIndex = 0;
 
     public SessionBean() {
@@ -65,34 +54,7 @@ public class SessionBean implements Serializable {
 
     public void setSelectedItemId(int selectedItemId) {
         this.selectedItemId = selectedItemId;
-    }
-
-    public int getSelectedBusID() {
-        return selectedBusID;
-    }
-
-    public void setSelectedBusID(int selectedBusID) {
-        this.selectedBusID = selectedBusID;
-    } 
-    
-
-    public int getSelectedStudentID() {
-
-        return selectedStudentID;
-    }
-
-    public void setSelectedStudentID(int selectedStudentID) {
-        this.selectedStudentID = selectedStudentID;
-    }
-    
-             public int getSelectedDriverID() {
-        return selectedDriverID;
-    }
-
-    public void setSelectedDriverID(int selectedDriverID) {
-        this.selectedDriverID = selectedDriverID;
-    }
-
+    }    
 
     public int getMenuIndex() {
         return menuIndex;
